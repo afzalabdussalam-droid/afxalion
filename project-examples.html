@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5eee7">
+  <meta name="description" content="Explore Afxalion's website projects for construction, travel, and logistics, plus illustrative construction layouts.">
+  <title>Website Projects and Examples | Afxalion</title>
+  <style>
+    :root{--ink:#151d2d;--orange:#e94b00;--cream:#fff8ef;--line:rgba(46,42,39,.22);--sans:Arial,Helvetica,sans-serif}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);font-family:var(--sans);background:#e9e9ee url("assets/canvas-background.webp") center/cover fixed no-repeat}
+    a{color:inherit}
+    a:focus-visible{outline:3px solid #143d74;outline-offset:4px}
+    .page{width:min(1160px,calc(100% - 48px));margin:28px auto 42px;overflow:hidden;border:1px solid rgba(64,57,51,.3);border-radius:16px;background:rgba(255,248,239,.94);box-shadow:0 12px 35px rgba(31,36,49,.12)}
+    .topbar{min-height:76px;padding:0 clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line)}
+    .brand{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-size:25px;font-weight:750;letter-spacing:-1.2px}
+    .brand-mark{width:30px;height:32px;background:var(--orange);clip-path:polygon(42% 0,59% 0,100% 100%,74% 100%,52% 43%,29% 100%,0 100%)}
+    .back-link{font-size:13px;font-weight:700;text-decoration:none}
+    .back-link:hover{text-decoration:underline;text-underline-offset:3px}
+    main{padding:clamp(24px,5vw,56px)}
+    .eyebrow{margin:0 0 12px;color:#d84300;font-size:12px;font-weight:750;letter-spacing:.04em;text-transform:uppercase}
+    h1{max-width:720px;margin:0 0 12px;font-size:clamp(36px,6vw,62px);line-height:.98;letter-spacing:-.06em}
+    .lead{max-width:680px;margin:0;color:#444851;font-size:16px;line-height:1.5}
+    .portfolio-grid{margin:24px 0 46px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .portfolio-card{min-width:0;overflow:hidden;display:grid;grid-template-columns:minmax(150px,.78fr) minmax(0,1.22fr);border:1px solid rgba(64,57,51,.17);border-radius:11px;background:#fffdfa;box-shadow:0 3px 12px rgba(39,32,27,.05)}
+    .portfolio-visual{min-height:220px;padding:18px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:12px;color:#fff;background:linear-gradient(145deg,#334a46,#131f20)}
+    .portfolio-visual.kora{background:linear-gradient(145deg,#c8a983,#4a372e 65%,#18272a)}
+    .portfolio-visual small{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+    .portfolio-visual strong{font-size:22px;line-height:.95;letter-spacing:-.05em}
+    .portfolio-visual img{width:min(100%,170px);height:auto;display:block;margin:auto}
+    .portfolio-copy{align-self:center;padding:19px}
+    .portfolio-copy .eyebrow{margin-bottom:8px;font-size:10px}
+    .portfolio-copy h2{margin:0 0 8px;font-size:22px;line-height:1.05;letter-spacing:-.04em}
+    .portfolio-copy p:not(.eyebrow){margin:0 0 13px;color:#444851;font-size:13px;line-height:1.5}
+    .portfolio-copy .button{min-height:38px;padding:0 14px;font-size:12px}
+    .button{min-height:44px;padding:0 19px;display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;background:var(--orange);color:#fff;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap}
+    .button:hover{background:#c83f00}
+    .examples{display:grid;gap:18px;margin-top:23px}
+    .example{scroll-margin-top:18px;display:grid;grid-template-columns:minmax(260px,.9fr) minmax(0,1.1fr);overflow:hidden;border:1px solid rgba(64,57,51,.17);border-radius:11px;background:#fffdfa;box-shadow:0 3px 12px rgba(39,32,27,.05)}
+    .example img{width:100%;height:100%;min-height:230px;display:block;object-fit:cover}
+    .example-copy{align-self:center;padding:clamp(20px,3vw,34px)}
+    .example-copy h2{margin:0 0 9px;font-size:clamp(22px,3vw,30px);line-height:1.05;letter-spacing:-.045em}
+    .example-copy p:not(.eyebrow){margin:0 0 10px;color:#444851;font-size:14px;line-height:1.5}
+    .example-copy ul{margin:0;padding-left:19px;color:#444851;font-size:13px;line-height:1.7}
+    .related-example{margin-top:17px;padding:12px 13px;display:grid;justify-items:start;gap:6px;border:1px solid rgba(64,57,51,.17);border-radius:8px;background:#fff7ed}
+    .related-example span{color:#d84300;font-size:10px;font-weight:750;letter-spacing:.05em;text-transform:uppercase}
+    .related-example strong{font-size:13px}
+    .related-example .button{min-height:36px;margin-top:3px;padding:0 14px;font-size:12px}
+    .note{margin:22px 0 0;color:#5e6066;font-size:12px;line-height:1.5}
+    @media(max-width:700px){.page{width:100%;margin:0;border:0;border-radius:0;box-shadow:none}.topbar{min-height:68px;padding:0 19px}.brand{font-size:22px}.brand-mark{width:27px;height:29px}main{padding:28px 18px 34px}.portfolio-grid{grid-template-columns:1fr;margin:20px 0 38px}.portfolio-card{grid-template-columns:116px minmax(0,1fr)}.portfolio-visual{min-height:205px;padding:13px}.portfolio-visual strong{font-size:18px}.portfolio-visual img{width:100%;max-width:110px}.portfolio-copy{padding:15px}.portfolio-copy h2{font-size:20px}.example{grid-template-columns:1fr}.example img{height:210px;min-height:0}.example-copy{padding:19px}.lead{font-size:15px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="index.html#work" aria-label="Afxalion home"><i class="brand-mark" aria-hidden="true"></i><span>Afxalion</span></a>
+      <a class="back-link" href="index.html#work">← Back to Work</a>
+    </header>
+    <main>
+      <p class="eyebrow">PROJECT EXAMPLES</p>
+      <h1>Website projects, shaped around the business.</h1>
+      <p class="lead">Explore websites from my portfolio, then browse illustrative layouts for residential, commercial, and civil construction.</p>
+
+      <p class="eyebrow">WEBSITE PROJECTS</p>
+      <div class="portfolio-grid" aria-label="Afxalion website portfolio">
+        <article class="portfolio-card" id="kora-build-co">
+          <div class="portfolio-visual kora" aria-hidden="true"><small>CONSTRUCTION · LAGOS</small><strong>KORA<br>BUILD CO.</strong></div>
+          <div class="portfolio-copy">
+            <p class="eyebrow">WEBSITE CONCEPT</p>
+            <h2>Kora Build Co.</h2>
+            <p>A construction website concept for a Lagos building company. The live site identifies Kora Build Co. as a concept brand.</p>
+            <a class="button" href="https://kora-build.pages.dev/" target="_blank" rel="noopener noreferrer">Open live project <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article class="portfolio-card" id="funseka">
+          <div class="portfolio-visual"><img src="funseka-example/assets/funseka-logo-light.svg" alt="Funseka — Travel and Logistics"><small>TRAVEL · LOGISTICS · LAGOS</small></div>
+          <div class="portfolio-copy">
+            <p class="eyebrow">WEBSITE PROJECT</p>
+            <h2>Funseka</h2>
+            <p>A website for Funseka's travel services and logistics cargo, including procurement, air freight, and sea freight.</p>
+            <a class="button" href="funseka-example/index.html" target="_blank" rel="noopener noreferrer">Open Funseka website <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+      </div>
+
+      <p class="eyebrow">ILLUSTRATIVE WEBSITE LAYOUTS</p>
+      <div class="examples">
+        <article class="example" id="residential">
+          <img src="https://images.unsplash.com/photo-1781269986378-a2f366df4d0f?auto=format&amp;fit=crop&amp;w=1000&amp;q=84" srcset="https://images.unsplash.com/photo-1781269986378-a2f366df4d0f?auto=format&amp;fit=crop&amp;w=600&amp;q=82 600w, https://images.unsplash.com/photo-1781269986378-a2f366df4d0f?auto=format&amp;fit=crop&amp;w=1200&amp;q=84 1200w" sizes="(max-width: 700px) 100vw, 40vw" alt="Modern residential home with landscaped grounds" loading="lazy">
+          <div class="example-copy">
+            <p class="eyebrow">RESIDENTIAL CONSTRUCTION</p>
+            <h2>Make the finished work easy to explore.</h2>
+            <p>An illustrative layout for a home builder to present project photography, services, and the areas they work in.</p>
+            <ul><li>Project-led gallery</li><li>Clear services and coverage</li><li>Direct route to request a quote</li></ul>
+            <div class="related-example"><span>Related portfolio project</span><strong>Kora Build Co. · Concept brand</strong><a class="button" href="#kora-build-co">View project <span aria-hidden="true">→</span></a></div>
+          </div>
+        </article>
+        <article class="example" id="commercial">
+          <img src="https://images.unsplash.com/photo-1757207276347-4cc5d4068c13?auto=format&amp;fit=crop&amp;w=1000&amp;q=84" srcset="https://images.unsplash.com/photo-1757207276347-4cc5d4068c13?auto=format&amp;fit=crop&amp;w=600&amp;q=82 600w, https://images.unsplash.com/photo-1757207276347-4cc5d4068c13?auto=format&amp;fit=crop&amp;w=1200&amp;q=84 1200w" sizes="(max-width: 700px) 100vw, 40vw" alt="Modern commercial office building with reflective glass windows" loading="lazy">
+          <div class="example-copy">
+            <p class="eyebrow">COMMERCIAL CONSTRUCTION</p>
+            <h2>Show the scale and type of work.</h2>
+            <p>An illustrative layout for a commercial contractor to organize completed office and business projects with useful project details.</p>
+            <ul><li>Project categories</li><li>Space for scope and delivery details</li><li>Clear business enquiry path</li></ul>
+          </div>
+        </article>
+        <article class="example" id="civil">
+          <img src="https://images.unsplash.com/photo-1763798709709-ef54e8bad856?auto=format&amp;fit=crop&amp;w=1000&amp;q=84" srcset="https://images.unsplash.com/photo-1763798709709-ef54e8bad856?auto=format&amp;fit=crop&amp;w=600&amp;q=82 600w, https://images.unsplash.com/photo-1763798709709-ef54e8bad856?auto=format&amp;fit=crop&amp;w=1200&amp;q=84 1200w" sizes="(max-width: 700px) 100vw, 40vw" alt="Bridge construction over a wide river" loading="lazy">
+          <div class="example-copy">
+            <p class="eyebrow">CIVIL INFRASTRUCTURE</p>
+            <h2>Give infrastructure projects context.</h2>
+            <p>An illustrative layout for presenting infrastructure work, the services involved, and the locations a team serves.</p>
+            <ul><li>Project summaries and images</li><li>Service and location information</li><li>Contact details easy to find</li></ul>
+          </div>
+        </article>
+      </div>
+      <p class="note">Kora Build Co. is presented as a website concept. Funseka is shown as a separate website project. The residential, commercial, and civil layouts are illustrative examples, not completed client projects.</p>
+    </main>
+  </div>
+</body>
+</html>

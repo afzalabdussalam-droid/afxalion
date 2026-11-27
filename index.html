@@ -3,541 +3,330 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5eee7">
-  <meta name="description" content="Websites for builders, contractors, and construction teams. Show your services and projects, and make it easy to ask for a quote.">
-  <title>Afxalion | Websites for construction companies</title>
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="Afxalion designs and builds thoughtful websites for businesses. Explore website design and development, selected projects and ways to get in touch.">
+  <title>Afxalion | Web design &amp; development</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{--ink:#151d2d;--orange:#e94b00;--cream:#fff8ef;--line:rgba(46,42,39,.34);--sans:Arial,Helvetica,sans-serif;--shell:rgba(255,248,239,.20)}
+    :root{--ink:#111;--paper:#faf9f6;--white:#fff;--orange:#ff5a1f;--muted:#66645f;--line:#dedbd5;--display:Manrope,Arial,sans-serif;--body:"DM Sans",Arial,sans-serif}
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;min-height:100vh;color:var(--ink);font-family:var(--sans);background-color:#e9e9ee;background-image:url("assets/canvas-background.webp");background-position:center center;background-repeat:no-repeat;background-attachment:fixed;background-size:cover}
+    html{scroll-behavior:smooth;scroll-padding-top:82px}
+    body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--body);-webkit-font-smoothing:antialiased}
     a{color:inherit}
-    a:focus-visible,button:focus-visible{outline:3px solid #143d74;outline-offset:4px}
-    .site-shell{position:relative;width:100%;min-height:100svh;margin:0;border:0;border-radius:0;overflow:visible;background:transparent;box-shadow:none;display:block;isolation:isolate}
-    .header{height:92px;position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:28px;padding:0 clamp(24px,4.4vw,68px);background:rgba(255,248,239,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(61,56,51,.12);transition:background-color .2s ease,color .2s ease}
-    .header.is-dark{color:#fff;background:rgba(10,13,17,.92);border-bottom-color:rgba(255,255,255,.12)}
-    .brand{display:flex;align-items:center;gap:9px;text-decoration:none;font-size:30px;font-weight:750;letter-spacing:-1.6px;white-space:nowrap}
-    .brand-mark{width:34px;height:36px;display:block;flex:none;background:var(--orange);clip-path:polygon(42% 0,59% 0,100% 100%,74% 100%,52% 43%,29% 100%,0 100%)}
-    .desktop-nav{margin-left:auto;display:flex;align-items:center;gap:clamp(12px,1.4vw,22px);font-size:15px;font-weight:600;white-space:nowrap}
-    .desktop-nav a{text-decoration:none}
-    .desktop-nav a:hover,.work-link:hover{color:#b83900}
-    .quote-link{min-height:50px;padding:0 24px;border-radius:999px;background:var(--orange);color:#fff;display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font-weight:700;white-space:nowrap;transition:background-color .15s ease}
-    .quote-link:hover{background:#c83f00}
-    .arrow{font-size:21px;font-weight:400;line-height:1}
-    .header .quote-link{margin-left:20px}
-    .menu-toggle{display:none}
-    .mobile-nav{display:none}
-    .hero{position:relative;min-height:calc(100svh - 92px);display:flex;align-items:center;padding:30px clamp(24px,4.4vw,68px) 42px;overflow:hidden}
-    .hero-visual{position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(255,248,239,.96) 0%,rgba(255,248,239,.84) 40%,rgba(255,248,239,.20) 66%,rgba(255,248,239,0) 100%),url("assets/construction-site.webp");background-position:center;background-size:cover;z-index:0;animation:hero-image-enter 900ms ease-out both}
-    .hero-copy{position:relative;z-index:2;width:min(54%,660px);padding-bottom:12px;animation:hero-copy-enter 680ms cubic-bezier(.2,.7,.2,1) 80ms both}
-    @keyframes hero-copy-enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes hero-image-enter{from{opacity:.45}to{opacity:1}}
-    .eyebrow{margin:0 0 22px;color:#d84300;font-size:15px;line-height:1.4;font-weight:750;text-transform:uppercase}
-    h1{max-width:660px;margin:0 0 23px;font-size:clamp(58px,5.3vw,78px);line-height:.99;letter-spacing:-.065em;font-weight:760}
-    .intro{max-width:535px;margin:0 0 25px;font-size:20px;line-height:1.43;font-weight:500}
-    .actions{display:flex;align-items:center;gap:28px}
-    .actions .quote-link{min-height:55px;padding:0 29px}
-    .work-link{font-size:18px;font-weight:700;text-decoration:none;border-bottom:1px solid currentColor;padding:0 0 7px;white-space:nowrap}
-    .work-link .arrow{margin-left:7px}
-    .shortcuts{height:64px;margin:-64px clamp(24px,4.4vw,68px) 24px;position:relative;z-index:4;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:center;border:1px solid rgba(84,77,70,.46);border-radius:15px;background:linear-gradient(105deg,rgba(248,236,222,.98),rgba(255,248,239,.98));box-shadow:0 4px 9px rgba(32,28,24,.17)}
-    .shortcut{min-height:42px;display:flex;align-items:center;justify-content:center;gap:12px;color:var(--ink);text-decoration:none;font-size:16px;font-weight:700}
-    .shortcut+.shortcut{border-left:1px solid rgba(47,52,59,.42)}
-    .shortcut:hover{color:#b83900}
-    .shortcut-icon{width:42px;height:42px;flex:none;position:relative;display:grid;place-items:center;color:var(--orange);background:radial-gradient(circle,rgba(233,75,0,.12) 0 69%,transparent 71%)}
-    .shortcut-icon.reference-icon{background:none}
-    .reference-icon img{width:40px;height:40px;display:block;object-fit:contain}
-    .building-icon{width:31px;height:34px;position:relative;display:block;border:0;padding:0}
-    .building-icon i{position:absolute;bottom:2px;display:block;border:2px solid var(--orange);background:repeating-linear-gradient(0deg,transparent 0 4px,var(--orange) 4px 5px,transparent 5px 8px)}
-    .building-icon i:nth-child(1){left:0;width:9px;height:16px}
-    .building-icon i:nth-child(2){left:10px;width:11px;height:28px}
-    .building-icon i:nth-child(3){right:0;width:9px;height:20px}
-    .building-icon i:nth-child(n+4){display:none}
-    .envelope-icon{width:29px;height:21px;position:relative;border:2px solid var(--orange);border-radius:1px}
-    .envelope-icon i{position:absolute;top:2px;width:15px;border-top:2px solid var(--orange)}
-    .envelope-icon i:first-child{left:2px;transform:rotate(32deg);transform-origin:left top}
-    .envelope-icon i:last-child{right:2px;transform:rotate(-32deg);transform-origin:right top}
-    .services-section{position:relative;isolation:isolate;min-height:560px;padding:54px clamp(24px,4.4vw,68px) 0;overflow:hidden;color:#fff;background:#101419;scroll-margin-top:92px}
-    .services-visual{position:absolute;z-index:-2;inset:0}
-    .services-visual img{width:100%;height:100%;display:block;object-fit:cover;object-position:center 48%}
-    .services-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,10,14,.72),rgba(7,10,14,.22) 59%,rgba(7,10,14,.25)),linear-gradient(0deg,rgba(5,7,10,.94) 0%,rgba(5,7,10,.36) 56%,rgba(5,7,10,.12))}
-    .services-copy{position:relative;z-index:2;width:min(430px,42%)}
-    .services-copy .eyebrow{margin:0 0 14px;color:#ff6a18;font-size:13px}
-    .services-copy h2{margin:0 0 16px;font:700 clamp(38px,4vw,60px)/.98 Georgia,"Times New Roman",serif;letter-spacing:-.045em}
-    .services-copy p:not(.eyebrow){margin:0 0 21px;max-width:400px;font-size:16px;line-height:1.45;color:rgba(255,255,255,.9)}
-    .services-cta{min-height:48px;padding:0 21px;border-radius:999px;display:inline-flex;align-items:center;gap:12px;color:#fff;background:var(--orange);text-decoration:none;font-size:15px;font-weight:700}
-    .service-list{position:absolute;z-index:3;right:0;bottom:0;width:60%;min-height:132px;margin:0;padding:12px 16px;list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:stretch;background:rgba(8,11,14,.86);border-top:1px solid rgba(255,255,255,.12);backdrop-filter:blur(8px);scroll-margin-top:120px}
-    .service-list li{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:8px 10px}
-    .service-list li+li{border-left:1px solid rgba(255,137,48,.65)}
-    .service-icon{position:relative;display:block;width:29px;height:29px;color:#ff7a18}
-    .service-icon.building{border:2px solid currentColor;width:21px;height:26px;background:repeating-linear-gradient(90deg,transparent 0 4px,currentColor 4px 6px,transparent 6px 8px),repeating-linear-gradient(0deg,transparent 0 5px,currentColor 5px 7px,transparent 7px 10px)}
-    .service-icon.gallery{border:2px solid currentColor;border-radius:2px}
-    .service-icon.gallery:before{content:"";position:absolute;width:5px;height:5px;right:4px;top:4px;border:1.5px solid currentColor;border-radius:50%}
-    .service-icon.gallery:after{content:"";position:absolute;left:3px;right:3px;bottom:4px;height:11px;background:linear-gradient(140deg,transparent 0 30%,currentColor 32% 39%,transparent 41%),linear-gradient(40deg,transparent 0 39%,currentColor 41% 49%,transparent 51%)}
-    .service-icon.form{border:2px solid currentColor;border-radius:2px;width:22px;height:27px}
-    .service-icon.form:before{content:"☰";position:absolute;left:3px;top:2px;font:13px/1 Arial;color:currentColor}
-    .service-icon.pin{width:19px;height:19px;border:2px solid currentColor;border-radius:50% 50% 50% 0;transform:rotate(-45deg);margin:3px 4px 7px}
-    .service-icon.pin:after{content:"";position:absolute;left:5px;top:5px;width:5px;height:5px;border:1.5px solid currentColor;border-radius:50%}
-    .service-icon.shield{width:23px;height:28px;background:currentColor;clip-path:polygon(50% 0,94% 16%,88% 66%,50% 100%,12% 66%,6% 16%)}
-    .service-icon.shield:after{content:"";position:absolute;inset:3px;background:#111820;clip-path:polygon(50% 0,94% 16%,88% 66%,50% 100%,12% 66%,6% 16%)}
-    .service-list strong{font-size:13px;line-height:1.22;font-weight:650}
-    .service-list small{display:none}
-    .work-section{position:relative;padding:clamp(34px,5vw,66px) clamp(24px,4.4vw,68px) 28px;background:rgba(255,248,239,.91);color:var(--ink);scroll-margin-top:92px}
-    .work-layout{display:grid;grid-template-columns:minmax(220px,.78fr) minmax(0,2.22fr);gap:clamp(22px,3vw,42px);align-items:center;max-width:1440px;margin:0 auto}
-    .work-copy .eyebrow,.process-copy .eyebrow{margin:0 0 10px;font-size:13px;color:#db4700}
-    .work-copy h2{max-width:350px;margin:0 0 13px;font-size:clamp(32px,3.25vw,47px);line-height:.99;letter-spacing:-.055em;font-weight:760}
-    .work-copy p:not(.eyebrow){max-width:350px;margin:0 0 18px;font-size:15px;line-height:1.48}
-    .work-cta,.process-cta{min-height:44px;padding:0 19px;border:0;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:#fff;text-decoration:none;font-size:14px;font-weight:700;white-space:nowrap}
-    .project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;min-width:0}
-    .project-card{min-width:0;overflow:hidden;border:1px solid rgba(64,57,51,.15);border-radius:8px;background:rgba(255,252,248,.88);box-shadow:0 3px 10px rgba(39,32,27,.055)}
-    .project-card img{width:100%;aspect-ratio:1.72;display:block;object-fit:cover}
-    .project-card-copy{padding:11px 12px 12px}
-    .project-card h3{margin:0 0 5px;font-size:15px;line-height:1.15;letter-spacing:-.02em}
-    .project-card h3 a{color:inherit;text-decoration:none}
-    .project-card h3 a:hover,.project-card h3 a:focus-visible{text-decoration:underline;text-decoration-color:var(--orange);text-underline-offset:3px}
-    .project-card p{min-height:36px;margin:0 0 9px;font-size:12px;line-height:1.42;color:#3a3e45}
-    .project-link{color:#d84300;font-size:11px;font-weight:700;text-decoration:none}
-    .project-link:hover,.project-link:focus-visible{text-decoration:underline}
-    .site-review{max-width:1440px;min-height:126px;margin:22px auto 0;display:grid;grid-template-columns:minmax(260px,.92fr) minmax(0,1.08fr);align-items:center;overflow:hidden;border:1px solid rgba(171,131,95,.19);border-radius:10px;background:rgba(255,248,239,.78)}
-    .site-review img{width:100%;height:126px;display:block;object-fit:cover;object-position:center 55%}
-    .site-review-copy{padding:18px clamp(18px,3vw,38px);display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .site-review-copy p{margin:0 0 5px;color:#6c625b;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
-    .site-review-copy h3{max-width:430px;margin:0;font-size:clamp(17px,1.7vw,23px);line-height:1.16;letter-spacing:-.035em}
-    .process-section{position:relative;padding:clamp(34px,4.5vw,58px) clamp(24px,4.4vw,68px) 52px;color:var(--ink);background:rgba(255,248,239,.72);scroll-margin-top:92px}
-    .process-inner{max-width:1440px;margin:0 auto}
-    .process-hero{position:relative;min-height:350px;padding:34px clamp(22px,3.3vw,48px);display:flex;align-items:flex-start;overflow:hidden;border-radius:10px 10px 0 0;background:#dbcbb8 url("assets/construction-site.webp") center 45%/cover no-repeat}
-    .process-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,248,239,.97) 0%,rgba(255,248,239,.89) 33%,rgba(255,248,239,.28) 59%,rgba(255,248,239,.02) 100%),linear-gradient(0deg,rgba(28,27,24,.14),transparent 45%)}
-    .process-copy{position:relative;z-index:1;width:min(380px,48%)}
-    .process-copy h2{margin:0 0 12px;font-size:clamp(34px,3.7vw,50px);line-height:.98;letter-spacing:-.06em}
-    .process-copy p:not(.eyebrow){max-width:320px;margin:0 0 17px;font-size:15px;line-height:1.45}
-    .process-steps{position:relative;z-index:2;margin:-1px 0 0;padding:25px 12px 12px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;background:rgba(255,248,239,.94);border:1px solid rgba(171,131,95,.18);border-radius:0 0 10px 10px}
-    .process-steps:before{content:"";position:absolute;top:0;left:12.5%;right:12.5%;border-top:1px solid rgba(225,79,16,.55)}
-    .process-card{position:relative;min-width:0;overflow:visible;border:1px solid rgba(64,57,51,.14);border-radius:7px;background:#fffaf5;box-shadow:0 2px 8px rgba(39,32,27,.045)}
-    .step-number{position:absolute;top:-25px;left:calc(50% - 12px);z-index:2;width:24px;height:24px;display:grid;place-items:center;border:2px solid rgba(255,248,239,.95);border-radius:50%;background:var(--orange);color:#fff;font-size:12px;font-weight:750}
-    .process-card img{width:100%;height:96px;display:block;object-fit:cover;border-radius:6px 6px 0 0}
-    .process-card-copy{min-height:58px;padding:9px 10px 10px;text-align:center}
-    .process-card h3{margin:0;font-size:13px;line-height:1.2;letter-spacing:-.02em}
-    .scope-section,.guide-section,.faq-section{position:relative;padding:clamp(42px,5vw,68px) clamp(24px,4.4vw,68px);color:var(--ink);scroll-margin-top:92px}
-    .scope-section{background:rgba(255,248,239,.94);overflow:hidden}
-    .scope-hardhat{position:absolute;right:4%;bottom:20px;width:112px;height:75px;z-index:0;background:linear-gradient(145deg,#ffd648 0%,#f4a900 62%,#cf7100 100%);clip-path:polygon(11% 75%,14% 50%,23% 28%,39% 11%,50% 5%,62% 11%,78% 28%,87% 51%,91% 75%,100% 82%,98% 94%,2% 94%,0 82%);filter:drop-shadow(0 8px 5px rgba(40,29,11,.24))}
-    .scope-hardhat:before{content:"";position:absolute;left:47%;top:10%;height:64%;border-left:5px solid rgba(255,220,77,.95)}
-    .scope-hardhat:after{content:"";position:absolute;left:14%;right:11%;top:76%;height:9%;border-radius:50%;background:#ca7400}
-    .scope-layout{max-width:1330px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(400px,.9fr);gap:clamp(32px,6vw,90px);align-items:center}
-    .scope-layout,.guide-layout,.faq-grid,.faq-heading{position:relative;z-index:1}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    .scope-copy{max-width:550px}
-    .scope-copy .eyebrow,.guide-copy .eyebrow,.faq-heading .eyebrow{margin:0 0 12px;color:#d84300;font-size:13px}
-    .scope-copy h2,.guide-copy h2,.faq-heading h2{margin:0 0 15px;font-size:clamp(34px,4vw,54px);line-height:.99;letter-spacing:-.06em}
-    .scope-copy p:not(.eyebrow),.guide-copy p:not(.eyebrow){max-width:500px;margin:0;font-size:16px;line-height:1.5}
-    .scope-form{padding:21px 22px 18px;border:1px solid rgba(58,53,47,.2);border-radius:10px;background:rgba(255,252,248,.88);box-shadow:0 4px 16px rgba(44,37,30,.06)}
-    .scope-form fieldset{margin:0;padding:0;border:0}
-    .scope-form legend{margin:0 0 12px;font-size:16px;font-weight:750}
-    .scope-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-    .scope-option{min-height:42px;padding:9px 11px;display:flex;align-items:center;gap:9px;border:1px solid rgba(63,58,52,.14);border-radius:6px;background:#fffaf5;font-size:13px;line-height:1.25;cursor:pointer}
-    .scope-option input{width:16px;height:16px;flex:none;margin:0;accent-color:var(--orange)}
-    .scope-form .work-cta{margin-top:14px;cursor:pointer}
-    .scope-note{margin:10px 0 0;color:#625b54;font-size:11px;line-height:1.4}
-    .guide-section{background:rgba(243,239,235,.92)}
-    .guide-layout{max-width:1330px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(310px,.8fr);gap:clamp(32px,7vw,100px);align-items:center}
-    .guide-copy{max-width:590px}
-    .guide-copy h2{max-width:530px}
-    .guide-form{margin-top:21px;display:flex;gap:9px;max-width:500px}
-    .guide-form input{width:100%;min-width:0;min-height:46px;padding:0 14px;border:1px solid rgba(52,54,58,.26);border-radius:7px;background:rgba(255,255,255,.86);font:inherit;font-size:14px;color:var(--ink)}
-    .guide-form button{min-height:46px;padding:0 17px;border:0;border-radius:7px;background:var(--orange);color:#fff;font:700 13px var(--sans);white-space:nowrap;cursor:pointer}
-    .guide-visual{min-height:300px;display:grid;place-items:center;perspective:800px}
-    .guide-cover{position:relative;width:min(280px,75vw);min-height:330px;padding:21px 19px 18px;overflow:hidden;transform:rotate(5deg);border:1px solid rgba(25,32,42,.25);border-radius:8px;background:#fffdf9;box-shadow:0 12px 24px rgba(24,29,38,.19)}
-    .guide-cover:before{content:"";position:absolute;inset:0 0 auto;height:122px;background:linear-gradient(180deg,rgba(21,29,45,.05),rgba(21,29,45,.32)),url("assets/construction-site.webp") center 42%/cover}
-    .guide-cover-brand{position:relative;z-index:1;margin:0 0 136px;color:#fff;font-size:11px;font-weight:800;text-shadow:0 1px 4px rgba(0,0,0,.5)}
-    .guide-cover h3{margin:0 0 7px;font-size:19px;line-height:1.03;letter-spacing:-.04em}
-    .guide-cover p{margin:0 0 13px;color:#605d58;font-size:10px;line-height:1.4}
-    .guide-cover ol{margin:0;padding:0;list-style:none;display:grid;gap:7px}
-    .guide-cover li{display:flex;align-items:center;gap:7px;color:#3c4148;font-size:9px;line-height:1.2}
-    .guide-cover li:before{content:"✓";width:13px;height:13px;flex:none;display:grid;place-items:center;border-radius:50%;background:rgba(233,75,0,.1);color:var(--orange);font-size:9px;font-weight:800}
-    .guide-benefits{max-width:1330px;margin:34px auto 0;padding-top:20px;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(44,48,54,.18)}
-    .guide-benefit{min-height:52px;display:flex;align-items:center;justify-content:center;gap:11px;text-align:left;font-size:13px;font-weight:700}
-    .guide-benefit+.guide-benefit{border-left:1px solid rgba(44,48,54,.2)}
-    .guide-benefit span{width:28px;height:28px;display:grid;place-items:center;border:1.5px solid var(--orange);border-radius:50%;color:var(--orange);font-size:13px}
-    .faq-section{background:rgba(255,248,239,.94)}
-    .faq-heading{max-width:1330px;margin:0 auto 22px}
-    .faq-heading h2{max-width:520px;margin-bottom:8px}
-    .faq-heading p:not(.eyebrow){margin:0;font-size:14px;line-height:1.45;color:#484b51}
-    .faq-grid{max-width:1330px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
-    .faq-item{align-self:start;min-width:0;border:1px solid rgba(62,56,51,.17);border-radius:8px;background:rgba(255,253,250,.88);box-shadow:0 3px 10px rgba(35,29,25,.04)}
-    .faq-item summary{min-height:91px;padding:13px 14px;display:flex;align-items:center;gap:11px;list-style:none;cursor:pointer;font-size:14px;font-weight:750;line-height:1.3}
-    .faq-item summary::-webkit-details-marker{display:none}
-    .faq-icon{width:30px;height:30px;flex:none;display:grid;place-items:center;border:1.5px solid var(--orange);border-radius:7px;color:var(--orange);font-size:17px;font-weight:700}
-    .faq-item summary:after{content:"+";margin-left:auto;color:var(--orange);font-size:19px;font-weight:400;transition:transform .2s ease}
-    .faq-item[open] summary:after{content:"−";transform:scale(1.15)}
-    .faq-answer{margin:0;padding:0 15px 15px 55px;color:#4a4c52;font-size:13px;line-height:1.5;animation:faq-answer-in .24s ease-out both}
-    @keyframes faq-answer-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
-    @supports selector(details::details-content){.faq-item{interpolate-size:allow-keywords}.faq-item::details-content{block-size:0;overflow:clip;transition:block-size .24s ease,content-visibility .24s allow-discrete}.faq-item[open]::details-content{block-size:auto}.faq-answer{animation:none}}
-    .contact-section{position:relative;isolation:isolate;overflow:hidden;padding:clamp(42px,5vw,68px) clamp(24px,4.4vw,68px) 0;color:var(--ink);background:rgba(255,248,239,.94);scroll-margin-top:92px}
-    .contact-section:before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,rgba(255,248,239,.99) 0%,rgba(255,248,239,.98) 42%,rgba(255,248,239,.86) 63%,rgba(255,248,239,.22) 100%),url("assets/construction-site.webp") right center/auto 100% no-repeat;opacity:.92}
-    .contact-layout{position:relative;max-width:1330px;min-height:300px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr);align-items:center;gap:clamp(30px,6vw,90px)}
-    .contact-copy{max-width:600px}
-    .contact-copy h2{margin:0 0 14px;font-size:clamp(38px,4.2vw,58px);line-height:.98;letter-spacing:-.06em}
-    .contact-copy p{max-width:510px;margin:0 0 22px;font-size:17px;line-height:1.48}
-    .contact-quote{min-height:48px;padding:0 22px;border-radius:999px;display:inline-flex;align-items:center;gap:11px;background:var(--orange);color:#fff;text-decoration:none;font-size:15px;font-weight:750}
-    .contact-list{padding:6px 0 6px 28px;border-left:1px solid rgba(44,48,54,.32);display:grid;gap:0}
-    .contact-method{min-height:68px;display:grid;grid-template-columns:32px minmax(0,1fr);align-items:center;gap:12px;text-decoration:none;border-bottom:1px solid rgba(44,48,54,.13)}
-    .contact-method:last-child{border-bottom:0}
-    .contact-symbol{width:30px;height:30px;display:grid;place-items:center;color:var(--orange);font-size:24px;line-height:1}
-    .contact-symbol.whatsapp{color:#16804a}
-    .contact-symbol.whatsapp svg{width:27px;height:27px;display:block}
-    .contact-symbol.email{position:relative;width:22px;height:17px;margin:0 4px;border:2px solid var(--orange);border-radius:2px}
-    .contact-symbol.email:after{content:"";position:absolute;left:2px;top:-2px;width:12px;height:12px;border-right:2px solid var(--orange);border-bottom:2px solid var(--orange);transform:rotate(45deg)}
-    .contact-method strong,.contact-method span{display:block}
-    .contact-method strong{margin-bottom:3px;font-size:14px}
-    .contact-method span{font-size:13px;line-height:1.35;overflow-wrap:anywhere}
-    .social-row{position:relative;max-width:1330px;min-height:60px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:0;border-top:1px solid rgba(44,48,54,.16)}
-    .social-row a{min-height:32px;padding:0 20px;display:flex;align-items:center;gap:8px;text-decoration:none;font-size:13px;font-weight:650}
-    .social-row a+a{border-left:1px solid rgba(225,79,16,.45)}
-    .social-mark{width:17px;height:17px;flex:none;display:grid;place-items:center;color:var(--ink)}
-    .social-mark svg{width:100%;height:100%;display:block}
-    .contact-footer{min-height:54px;padding:0 clamp(24px,4.4vw,68px);display:flex;align-items:center;justify-content:space-between;gap:20px;color:#56575c;background:rgba(255,248,239,.97);font-size:11px}
-    .contact-footer a{text-decoration:none}
-    #page-loader{display:none;position:fixed;inset:0;z-index:1000;place-items:center;background:rgba(255,248,239,.96);opacity:1;visibility:visible;transition:opacity .24s ease,visibility .24s ease}
-    html.page-loading #page-loader{display:grid}
-    #page-loader.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
-    .loader-content{display:grid;justify-items:center;gap:13px;color:var(--ink)}
-    .loader-brand{display:flex;align-items:center;gap:9px;font-size:24px;font-weight:750;letter-spacing:-1px}
-    .loader-brand .brand-mark{width:30px;height:32px;animation:loader-mark-pulse 900ms ease-in-out infinite alternate}
-    .loader-caption{font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase}
-    .loader-track{width:92px;height:3px;overflow:hidden;border-radius:99px;background:rgba(21,29,45,.12)}
-    .loader-track:after{content:"";display:block;width:36px;height:100%;border-radius:inherit;background:var(--orange);animation:loader-progress 850ms ease-in-out infinite}
-    @keyframes loader-mark-pulse{to{transform:translateY(-3px);opacity:.72}}
-    @keyframes loader-progress{from{transform:translateX(-38px)}to{transform:translateX(94px)}}
-    @media(max-width:1120px) and (min-width:821px){.header{gap:16px;padding:0 28px}.brand{font-size:27px}.desktop-nav{gap:10px;font-size:13px}.header .quote-link{margin-left:6px;padding:0 17px}.hero{padding-left:34px}.hero-copy{width:56%}h1{font-size:clamp(52px,5.8vw,66px)}.intro{max-width:480px;font-size:18px}.services-section{min-height:500px}.services-copy{width:45%}.service-list{width:64%;min-height:122px}}
-    @media(max-width:820px){
-      body{background-attachment:fixed;background-position:center top;background-size:100% 100vh}
-      .site-shell{width:100%;min-height:100svh;margin:0;border:0;border-radius:0;box-shadow:none;background:transparent;overflow:visible}
-      .header{height:72px;padding:0 20px;position:sticky;top:0;background:rgba(255,248,239,.93);backdrop-filter:blur(8px);border-bottom:1px solid rgba(61,56,51,.13)}
-      .header.is-dark{color:#fff;background:rgba(10,13,17,.94)}
-      .brand{font-size:24px;letter-spacing:-1.2px;gap:7px}.brand-mark{width:29px;height:31px}
-      .desktop-nav{display:none}
-      .header .quote-link{display:none}
-      .menu-toggle{margin-left:auto;width:46px;height:46px;border:0;background:transparent;border-radius:10px;display:grid;place-items:center;color:var(--ink);cursor:pointer}
-      .hamburger{width:24px;height:18px;position:relative;border-top:2px solid currentColor;border-bottom:2px solid currentColor}
-      .hamburger:after{content:"";position:absolute;left:0;right:0;top:6px;border-top:2px solid currentColor}
-      .mobile-nav{position:absolute;z-index:10;top:71px;left:0;right:0;padding:10px 20px 20px;background:rgba(255,248,239,.98);border-bottom:1px solid rgba(61,56,51,.16);box-shadow:0 10px 20px rgba(30,36,48,.10)}
-      .header.is-dark .mobile-nav{color:#fff;background:rgba(10,13,17,.98);border-bottom-color:rgba(255,255,255,.15)}
-      .mobile-nav[data-open="true"]{display:grid;gap:2px}
-      .mobile-nav a{padding:13px 4px;text-decoration:none;font-weight:650;border-bottom:1px solid rgba(61,56,51,.12)}
-      .mobile-nav .mobile-quote{margin-top:12px;justify-self:start;border:0;padding:0 22px;min-height:48px;color:#fff;background:var(--orange);border-radius:999px}
-      .hero{min-height:calc(100svh - 72px);display:block;padding:30px 22px 265px;overflow:hidden}
-      .hero-visual{background-image:linear-gradient(180deg,rgba(255,248,239,.97) 0%,rgba(255,248,239,.91) 44%,rgba(255,248,239,.18) 82%,rgba(255,248,239,0) 100%),url("assets/construction-site.webp");background-position:center;background-size:cover}
-      .hero-copy{width:100%;max-width:520px;padding:0}
-      .eyebrow{max-width:410px;margin:0 0 15px;font-size:12px;line-height:1.45}
-      h1{max-width:440px;margin:0 0 18px;font-size:clamp(38px,8vw,54px);line-height:1.02;letter-spacing:-.06em}
-      .intro{max-width:470px;margin:0 0 19px;font-size:16px;line-height:1.46}
-      .actions{align-items:flex-start;flex-direction:column;gap:13px}
-      .actions .quote-link{min-height:50px;padding:0 22px;font-size:16px}
-      .work-link{font-size:16px;padding-bottom:6px}
-      .shortcuts{height:68px;margin:-68px 16px 20px;border-radius:13px}
-      .shortcuts .shortcut{height:54px;min-height:54px;flex-direction:column;gap:0;font-size:10px}
-      .shortcuts .shortcut-icon{height:34px;width:34px;transform:scale(.82);transform-origin:center}
-      .services-section{min-height:740px;padding:34px 20px 0;scroll-margin-top:72px}
-      .services-visual img{object-position:54% center}
-      .services-visual:after{background:linear-gradient(180deg,rgba(5,7,10,.44) 0%,rgba(5,7,10,.26) 35%,rgba(5,7,10,.62) 62%,rgba(5,7,10,.95) 100%)}
-      .services-copy{width:100%;max-width:430px}
-      .services-copy .eyebrow{font-size:12px;margin-bottom:12px}
-      .services-copy h2{font-size:clamp(36px,9vw,45px);line-height:1.01;margin-bottom:13px}
-      .services-copy p:not(.eyebrow){font-size:15px;line-height:1.45;margin-bottom:17px;max-width:360px}
-      .services-cta{min-height:46px;font-size:14px}
-      .service-list{width:100%;height:190px;min-height:0;right:0;bottom:0;padding:10px 14px 12px;grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(2,1fr);background:rgba(7,10,13,.58);backdrop-filter:blur(5px)}
-      .service-list li{grid-column:span 2;gap:5px;padding:7px 3px}
-      .service-list li:nth-child(4){grid-column:2/span 2}
-      .service-list li:nth-child(5){grid-column:4/span 2}
-      .service-list li+li{border-left:0}
-      .service-list li:nth-child(2),.service-list li:nth-child(3),.service-list li:nth-child(5){border-left:1px solid rgba(255,137,48,.55)}
-      .service-icon{transform:scale(.9)}
-      .service-list strong{font-size:11px;line-height:1.15;max-width:76px}
-      .work-section{padding:34px 20px 23px;scroll-margin-top:72px}
-      .work-layout{grid-template-columns:1fr;gap:20px}
-      .work-copy h2{max-width:430px;font-size:clamp(34px,8.8vw,44px)}
-      .work-copy p:not(.eyebrow){max-width:440px}
-      .project-grid{grid-template-columns:1fr;gap:12px}
-      .project-card{display:grid;grid-template-columns:minmax(115px,.9fr) minmax(0,1.1fr);align-items:stretch}
-      .project-card img{height:100%;min-height:148px;aspect-ratio:auto;object-fit:cover}
-      .project-card-copy{padding:14px 13px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
-      .project-card h3{font-size:15px}
-      .project-card p{min-height:0;margin-bottom:10px;font-size:12px}
-      .site-review{margin-top:16px;grid-template-columns:1fr;min-height:0}
-      .site-review img{height:132px}
-      .site-review-copy{padding:16px;display:grid;gap:13px}
-      .site-review-copy h3{font-size:19px}
-      .site-review-copy .work-cta{justify-self:start}
-      .process-section{padding:31px 20px 38px;scroll-margin-top:72px}
-      .process-hero{min-height:450px;padding:28px 20px;align-items:flex-start;border-radius:9px 9px 0 0;background-position:58% center}
-      .process-hero:before{background:linear-gradient(180deg,rgba(255,248,239,.97) 0%,rgba(255,248,239,.92) 37%,rgba(255,248,239,.37) 68%,rgba(20,20,20,.08) 100%)}
-      .process-copy{width:100%;max-width:390px}
-      .process-copy .eyebrow{font-size:12px}
-      .process-copy h2{font-size:clamp(36px,9vw,47px)}
-      .process-copy p:not(.eyebrow){max-width:360px;font-size:15px}
-      .process-steps{margin:0;padding:27px 10px 12px;grid-template-columns:1fr;gap:9px;border-radius:0 0 9px 9px}
-      .process-steps:before{top:0;left:21px;right:auto;height:100%;border-top:0;border-left:1px solid rgba(225,79,16,.55)}
-      .process-card{display:grid;grid-template-columns:104px minmax(0,1fr);align-items:center;min-height:86px}
-      .step-number{top:calc(50% - 12px);left:-1px;width:23px;height:23px;font-size:11px}
-      .process-card img{height:84px;min-height:84px;border-radius:6px 0 0 6px}
-      .process-card-copy{min-height:0;padding:12px 13px;text-align:left}
-      .process-card h3{font-size:14px}
-      .scope-section,.guide-section,.faq-section{padding:38px 20px;scroll-margin-top:72px}
-      .scope-layout,.guide-layout{grid-template-columns:1fr;gap:24px}
-      .scope-copy h2,.guide-copy h2,.faq-heading h2{font-size:clamp(34px,9vw,44px)}
-      .scope-copy p:not(.eyebrow),.guide-copy p:not(.eyebrow){font-size:15px}
-      .scope-form{padding:17px 15px}
-      .scope-options{grid-template-columns:1fr 1fr;gap:7px}
-      .scope-option{min-height:45px;padding:8px;font-size:12px}
-      .scope-hardhat{display:none}
-      .guide-layout{gap:14px}
-      .guide-form{flex-direction:column;max-width:none}
-      .guide-form button{align-self:flex-start}
-      .guide-visual{min-height:270px;order:2}
-      .guide-cover{width:220px;min-height:290px;padding:16px;transform:rotate(3deg)}
-      .guide-cover:before{height:105px}
-      .guide-cover-brand{margin-bottom:116px}
-      .guide-benefits{margin-top:24px;padding-top:12px;grid-template-columns:1fr}
-      .guide-benefit{min-height:44px;justify-content:flex-start;padding:4px 10px}
-      .guide-benefit+.guide-benefit{border-left:0;border-top:1px solid rgba(44,48,54,.14)}
-      .faq-grid{grid-template-columns:1fr;gap:8px}
-      .faq-item summary{min-height:64px;padding:11px 12px;font-size:14px}
-      .faq-answer{padding:0 14px 14px 53px}
-      .contact-section{padding:38px 20px 0;scroll-margin-top:72px}
-      .contact-section:before{background-image:linear-gradient(180deg,rgba(255,248,239,.98) 0%,rgba(255,248,239,.96) 50%,rgba(255,248,239,.72) 100%),url("assets/construction-site.webp");background-position:center,center bottom;background-size:cover,auto 50%}
-      .contact-layout{min-height:0;padding:0 0 26px;grid-template-columns:1fr;gap:26px}
-      .contact-copy h2{font-size:clamp(36px,9vw,46px)}
-      .contact-copy p{font-size:15px}
-      .contact-list{padding:10px 0 0;border-left:0;border-top:1px solid rgba(44,48,54,.24)}
-      .contact-method{min-height:62px;grid-template-columns:30px minmax(0,1fr)}
-      .social-row{min-height:56px;flex-wrap:wrap;gap:0}
-      .social-row a{padding:0 11px;font-size:12px}
-      .contact-footer{min-height:52px;padding:12px 20px;flex-direction:column;align-items:flex-start;justify-content:center;gap:7px}
+    a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--orange);outline-offset:4px}
+    .wrap{width:min(1180px,calc(100% - 48px));margin-inline:auto}
+    .header{height:78px;position:sticky;top:0;z-index:20;display:flex;align-items:center;background:rgba(17,17,17,.96);color:#fff;border-bottom:1px solid rgba(255,255,255,.1);backdrop-filter:blur(12px)}
+    .header-inner{width:min(1320px,calc(100% - 48px));margin:auto;display:flex;align-items:center;gap:32px}
+    .brand{display:inline-flex;align-items:center;gap:10px;color:inherit;text-decoration:none;font:800 23px/1 var(--display);letter-spacing:-1.3px}
+    .brand-mark{width:25px;height:28px;background:var(--orange);clip-path:polygon(39% 0,59% 0,100% 100%,73% 100%,50% 43%,27% 100%,0 100%)}
+    .nav{margin-left:auto;display:flex;align-items:center;gap:clamp(18px,3vw,40px)}
+    .nav a{color:#d0cfcb;text-decoration:none;font-size:14px;font-weight:600;transition:color .2s}
+    .nav a:hover{color:#fff}
+    .button{min-height:48px;padding:0 20px;border:1px solid transparent;border-radius:4px;display:inline-flex;align-items:center;justify-content:center;gap:12px;text-decoration:none;font-weight:700;transition:background .2s,transform .2s}
+    .button:hover{transform:translateY(-2px)}
+    .button-orange{background:var(--orange);color:#16110e}
+    .button-orange:hover{background:#ff7441}
+    .button-light{background:var(--paper);color:var(--ink)}
+    .button-outline{border-color:rgba(255,255,255,.36);color:#fff}
+    .button-outline:hover{background:rgba(255,255,255,.1)}
+    .menu-toggle{display:none;margin-left:auto;padding:9px 11px;border:1px solid rgba(255,255,255,.3);border-radius:4px;background:transparent;color:#fff;font-size:20px}
+    .hero{position:relative;overflow:hidden;background:#111;color:#fff}
+    .hero-inner{width:min(1320px,calc(100% - 48px));min-height:630px;margin:auto;padding:90px 0 84px;display:grid;grid-template-columns:1.04fr .96fr;align-items:center;gap:42px}
+    .hero-copy{position:relative;z-index:2}
+    .eyebrow{margin:0 0 18px;color:var(--orange);font:700 12px/1.3 var(--body);letter-spacing:.16em;text-transform:uppercase}
+    h1,h2,h3,p{margin-top:0}
+    h1,h2{font-family:var(--display);letter-spacing:-.06em}
+    h1{max-width:680px;margin:0 0 24px;font-size:clamp(54px,7.6vw,100px);line-height:.98;font-weight:700}
+    h1 em,.accent{color:var(--orange);font-style:normal}
+    .hero-lede{max-width:520px;margin:0 0 32px;color:#c7c5c0;font-size:18px;line-height:1.65}
+    .hero-actions{display:flex;align-items:center;gap:13px;flex-wrap:wrap}
+    .hero-note{margin:52px 0 0;color:#888780;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+    .hero-art{position:relative;min-height:405px;display:grid;place-items:center}
+    .art-orbit{position:absolute;width:min(37vw,410px);aspect-ratio:1;border:1px solid rgba(255,255,255,.13);border-radius:50%;transform:rotate(-22deg) scaleY(.7)}
+    .art-orbit:before,.art-orbit:after{content:"";position:absolute;inset:11%;border:1px solid rgba(255,255,255,.1);border-radius:50%}
+    .art-orbit:after{inset:23%}
+    .art-spark{position:absolute;right:8%;top:14%;color:var(--orange);font:100px/1 var(--display)}
+    .browser{position:relative;z-index:1;width:min(100%,480px);overflow:hidden;border:1px solid #4b4a47;border-radius:9px;background:#f7f5f0;color:#171717;box-shadow:0 32px 90px rgba(0,0,0,.44);transform:rotate(-4deg)}
+    .browser-bar{height:35px;padding:0 13px;display:flex;align-items:center;gap:6px;background:#e7e4de;border-bottom:1px solid #d4d0c8}
+    .browser-bar i{width:7px;height:7px;border-radius:50%;background:#bbb7af}
+    .browser-bar span{margin-left:10px;color:#79766f;font-size:9px}
+    .browser-page{padding:25px 26px 20px;min-height:275px}
+    .mock-nav{display:flex;justify-content:space-between;align-items:center;font:800 10px var(--display)}
+    .mock-nav b{width:12px;height:13px;margin-right:4px;display:inline-block;background:var(--orange);clip-path:polygon(39% 0,59% 0,100% 100%,73% 100%,50% 43%,27% 100%,0 100%)}
+    .mock-links{color:#6d6963;font:600 7px var(--body);word-spacing:13px}
+    .mock-hero{margin-top:34px;display:grid;grid-template-columns:1.1fr .9fr;gap:15px;align-items:center}
+    .mock-hero small{color:#e34e19;font-size:7px;font-weight:800;letter-spacing:.12em}
+    .mock-hero h2{margin:8px 0;font-size:28px;line-height:.98}
+    .mock-hero p{margin:0;color:#666;font-size:8px;line-height:1.5}
+    .mock-hero .mock-button{margin-top:12px;padding:7px 10px;display:inline-block;background:#161616;color:#fff;font-size:7px}
+    .mock-photo{height:150px;position:relative;overflow:hidden;background:linear-gradient(145deg,#ffc4a5 0 26%,#ff6b32 26% 54%,#d63e12 54% 68%,#f2a17c 68%)}
+    .mock-photo:before{content:"";position:absolute;inset:23px 16px 0;background:linear-gradient(90deg,transparent 10%,#201f1e 10% 14%,transparent 14% 47%,#201f1e 47% 51%,transparent 51%),linear-gradient(0deg,#201f1e 0 8%,transparent 8% 49%,rgba(32,31,30,.75) 49% 53%,transparent 53%);opacity:.86}
+    .mock-photo:after{content:"";position:absolute;width:62px;height:62px;right:12px;top:13px;border:1px solid rgba(255,255,255,.7);border-radius:50%}
+    .mock-bottom{margin-top:22px;padding-top:12px;border-top:1px solid #ddd8d0;display:flex;justify-content:space-between;color:#79766f;font-size:7px}
+    .hero-caption{position:absolute;left:3%;bottom:7%;color:#9d9b95;font-size:10px;letter-spacing:.12em;text-transform:uppercase;transform:rotate(-90deg);transform-origin:left}
+    .ticker{overflow:hidden;background:var(--orange);color:#17110e}
+    .ticker-inner{width:max-content;padding:13px 0;display:flex;gap:38px;align-items:center;font:800 12px var(--display);letter-spacing:.1em;text-transform:uppercase}
+    .ticker-inner span{display:flex;gap:38px;align-items:center}
+    .ticker i{font-style:normal;font-size:18px}
+    .section{padding:104px 0}
+    .section-head{margin-bottom:48px;display:flex;align-items:end;justify-content:space-between;gap:36px}
+    .section-head h2{max-width:680px;margin:0;font-size:clamp(38px,5.4vw,66px);line-height:1.02}
+    .section-head>p{max-width:370px;margin:0;color:var(--muted);font-size:16px}
+    .services{background:var(--paper)}
+    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .service-card{min-height:266px;padding:28px 28px 32px 0}
+    .service-card+.service-card{padding-left:28px;border-left:1px solid var(--line)}
+    .service-number{margin-bottom:47px;display:block;color:#96928b;font-size:12px}
+    .service-icon{width:42px;height:42px;margin-bottom:20px;display:grid;place-items:center;border:1px solid #c9c4bb;border-radius:50%;color:var(--orange);font-size:19px}
+    .service-card h3{margin:0 0 10px;font:700 22px var(--display);letter-spacing:-.04em}
+    .service-card p{max-width:310px;margin:0;color:var(--muted);font-size:14px}
+    .work{background:#eeece6}
+    .work-head{margin-bottom:34px}
+    .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .work-card{overflow:hidden;background:var(--white);border:1px solid #d9d5ce}
+    .work-visual{min-height:280px;position:relative;overflow:hidden;background:#171717}
+    .work-visual.travel{background:linear-gradient(155deg,#f3cb95 0 38%,#df5e31 38% 67%,#283b45 67%)}
+    .work-visual.travel:before{content:"";position:absolute;left:13%;right:13%;top:18%;bottom:-13%;border:1px solid rgba(255,255,255,.55);border-radius:48% 48% 0 0}
+    .work-visual.travel:after{content:"F";position:absolute;right:15%;top:7%;color:#fff;font:800 150px/1 var(--display);opacity:.85}
+    .work-visual.build{background:linear-gradient(135deg,#34291f,#e4803c 55%,#ded5c4 55% 100%)}
+    .work-visual.build:before{content:"";position:absolute;inset:18% 13% 0;background:repeating-linear-gradient(90deg,transparent 0 21%,rgba(18,18,18,.85) 21% 23%,transparent 23% 49%),repeating-linear-gradient(0deg,transparent 0 26%,rgba(18,18,18,.65) 26% 29%,transparent 29% 55%);border:1px solid rgba(255,255,255,.38)}
+    .visual-label{position:absolute;left:18px;top:18px;padding:7px 10px;background:rgba(17,17,17,.82);color:#fff;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    .work-info{padding:22px 23px 23px;display:flex;justify-content:space-between;align-items:end;gap:16px}
+    .work-info h3{margin:0 0 4px;font:700 21px var(--display);letter-spacing:-.04em}
+    .work-info p{margin:0;color:var(--muted);font-size:13px}
+    .work-link{flex:none;color:#b73d15;font-size:13px;font-weight:700;text-decoration:none}
+    .work-link:hover{text-decoration:underline;text-underline-offset:4px}
+    .work-note{margin:17px 0 0;color:#6b6862;font-size:12px}
+    .approach{background:var(--ink);color:#fff}
+    .approach .section-head>p{color:#b1b0ac}
+    .steps{border-top:1px solid #3c3c3a}
+    .step{padding:23px 0;display:grid;grid-template-columns:70px 1fr 1.1fr;align-items:center;gap:20px;border-bottom:1px solid #3c3c3a}
+    .step-num{color:var(--orange);font-size:13px;font-weight:700}
+    .step h3{margin:0;font:600 20px var(--display);letter-spacing:-.035em}
+    .step p{max-width:440px;margin:0;color:#aaa9a4;font-size:14px}
+    .faq{background:#fff}
+    .faq-layout{display:grid;grid-template-columns:.82fr 1.18fr;gap:90px}
+    .faq-intro h2{margin:0;font-size:clamp(40px,5vw,62px);line-height:1}
+    .faq-intro>p:last-child{max-width:320px;margin-top:20px;color:var(--muted)}
+    .faq-list{border-top:1px solid var(--line)}
+    details{border-bottom:1px solid var(--line)}
+    summary{padding:20px 0;display:flex;justify-content:space-between;gap:20px;cursor:pointer;list-style:none;font-weight:650}
+    summary::-webkit-details-marker{display:none}
+    summary:after{content:"+";color:var(--orange);font:400 23px/1 var(--body)}
+    details[open] summary:after{content:"−"}
+    details p{max-width:600px;margin:0;padding:0 36px 20px 0;color:var(--muted);font-size:14px}
+    .contact{padding:82px 0;background:var(--orange);color:var(--ink)}
+    .contact-layout{display:grid;grid-template-columns:1.1fr .9fr;align-items:end;gap:48px}
+    .contact .eyebrow{color:#342014}
+    .contact h2{max-width:680px;margin:0 0 18px;font-size:clamp(44px,6vw,76px);line-height:.98}
+    .contact-copy>p:last-of-type{max-width:470px;margin-bottom:24px;color:#3d2c23}
+    .contact-links{display:grid;gap:12px}
+    .contact-links a{padding:14px 0;display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid rgba(17,17,17,.3);font-weight:650;text-decoration:none}
+    .contact-links a span:last-child{font-size:13px}
+    .contact-links a:hover{color:#fff}
+    .footer{padding:28px 0;background:#111;color:#fff}
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:24px}
+    .footer p{margin:0;color:#999;font-size:12px}
+    .socials{display:flex;gap:20px}
+    .socials a{color:#cac9c5;font-size:12px;text-decoration:none}
+    .socials a:hover{color:var(--orange)}
+    .menu-panel{display:none}
+    @media(max-width:850px){
+      .nav,.header-cta{display:none}
+      .menu-toggle{display:block}
+      .hero-inner{min-height:unset;padding:74px 0 56px;grid-template-columns:1fr;gap:22px}
+      .hero-art{min-height:350px}
+      .art-orbit{width:min(74vw,400px)}
+      .browser{width:min(92%,480px)}
+      .hero-caption{left:0;bottom:11%}
+      .section{padding:76px 0}
+      .section-head{align-items:start;flex-direction:column;gap:18px}
+      .section-head>p{max-width:540px}
+      .faq-layout{grid-template-columns:1fr;gap:34px}
+      .contact-layout{grid-template-columns:1fr;gap:28px}
     }
-    @media(max-width:390px){.header{padding:0 16px}.hero{padding-left:19px;padding-right:19px;padding-top:26px}.eyebrow{font-size:11px}.intro{font-size:15px}.actions{gap:11px}.shortcuts{margin-left:14px;margin-right:14px}.shortcuts .shortcut{font-size:10px}.services-section{min-height:720px;padding-left:18px;padding-right:18px}.service-list{height:178px;padding-left:7px;padding-right:7px}.service-list strong{font-size:10px}.work-section{padding-left:18px;padding-right:18px}.project-card{grid-template-columns:104px minmax(0,1fr)}.project-card img{min-height:136px}.site-review-copy{padding:14px}.process-section{padding-left:18px;padding-right:18px}.process-card{grid-template-columns:92px minmax(0,1fr)}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+    @media(max-width:600px){
+      .wrap,.header-inner,.hero-inner{width:calc(100% - 36px)}
+      .header{height:68px}
+      .brand{font-size:21px}
+      h1{font-size:clamp(52px,15vw,76px)}
+      .hero-lede{font-size:16px}
+      .hero-inner{padding-top:60px}
+      .hero-art{min-height:300px}
+      .browser-page{padding:19px 17px;min-height:220px}
+      .mock-hero{margin-top:27px}
+      .mock-hero h2{font-size:22px}
+      .mock-photo{height:125px}
+      .hero-note{margin-top:34px}
+      .section{padding:64px 0}
+      .section-head{margin-bottom:30px}
+      .section-head h2{font-size:42px}
+      .service-grid{grid-template-columns:1fr}
+      .service-card{min-height:unset;padding:22px 0!important;border-left:0!important}
+      .service-card+.service-card{border-top:1px solid var(--line);border-left:0}
+      .service-number{margin-bottom:20px}
+      .service-icon{margin-bottom:13px}
+      .work-grid{grid-template-columns:1fr}
+      .work-visual{min-height:235px}
+      .work-info{padding:18px}
+      .work-info h3{font-size:18px}
+      .work-info p{font-size:12px}
+      .step{grid-template-columns:34px 1fr;gap:8px 14px}
+      .step p{grid-column:2}
+      .approach .section-head h2{font-size:42px}
+      .contact{padding:62px 0}
+      .contact h2{font-size:48px}
+      .footer-inner{align-items:flex-start;flex-direction:column}
+      .menu-panel[data-open="true"]{position:absolute;top:68px;left:0;right:0;padding:13px 18px 21px;display:grid;gap:3px;background:#111;border-top:1px solid #333}
+      .menu-panel a{padding:12px 2px;color:#eee;text-decoration:none;font-size:15px}
+      .menu-panel .button{margin-top:7px;justify-self:start;color:#111}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
   </style>
-  <script>document.documentElement.classList.add('page-loading')</script>
 </head>
 <body>
-  <div id="page-loader" role="status" aria-label="Loading Afxalion">
-    <div class="loader-content"><div class="loader-brand"><i class="brand-mark" aria-hidden="true"></i><span>Afxalion</span></div><span class="loader-caption">Loading</span><span class="loader-track" aria-hidden="true"></span></div>
-  </div>
-  <main class="site-shell">
-    <header class="header">
-      <a class="brand" href="./index.html" aria-label="Afxalion home"><i class="brand-mark" aria-hidden="true"></i><span>Afxalion</span></a>
-      <nav class="desktop-nav" aria-label="Main navigation">
-        <a href="#services">Services</a><a href="#work">Work</a><a href="#process">Process</a><a href="#scope">Scope</a><a href="#guide">Guide</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="#home" aria-label="Afxalion home"><span class="brand-mark" aria-hidden="true"></span><span>Afxalion</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#services">Services</a><a href="#work">Work</a><a href="#approach">Approach</a><a href="#faq">FAQ</a>
       </nav>
-      <a class="quote-link" href="https://wa.me/2349017580961?text=Hi%20Afxalion%2C%20I%E2%80%99d%20like%20to%20ask%20about%20a%20website%20quote.">Get a quote <span class="arrow" aria-hidden="true">→</span></a>
-      <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav"><span class="hamburger" aria-hidden="true"></span></button>
-      <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" data-open="false" hidden>
-        <a href="#services">Services</a><a href="#work">Work</a><a href="#process">Process</a><a href="#scope">Scope</a><a href="#guide">Guide</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
-        <a class="mobile-quote" href="https://wa.me/2349017580961?text=Hi%20Afxalion%2C%20I%E2%80%99d%20like%20to%20ask%20about%20a%20website%20quote.">Get a quote <span class="arrow" aria-hidden="true">→</span></a>
+      <a class="button button-orange header-cta" href="https://wa.me/2349017580961?text=Hi%20Afxalion%2C%20I%E2%80%99d%20like%20to%20ask%20about%20a%20website%20project.">Start a conversation <span aria-hidden="true">↗</span></a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">☰</button>
+      <nav class="menu-panel" id="mobile-nav" data-open="false" hidden aria-label="Mobile navigation">
+        <a href="#services">Services</a><a href="#work">Work</a><a href="#approach">Approach</a><a href="#faq">FAQ</a>
+        <a class="button button-orange" href="https://wa.me/2349017580961?text=Hi%20Afxalion%2C%20I%E2%80%99d%20like%20to%20ask%20about%20a%20website%20project.">Start a conversation <span aria-hidden="true">↗</span></a>
       </nav>
-    </header>
+    </div>
+  </header>
+  <main id="home">
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-visual" aria-hidden="true"></div>
-      <div class="hero-copy">
-        <p class="eyebrow">WEBSITES FOR BUILDERS, CONTRACTORS &amp; CONSTRUCTION TEAMS</p>
-        <h1 id="hero-title">Show the work.<br>Win the right<br>enquiries.</h1>
-        <p class="intro">Afxalion builds websites for construction companies. Put your services, projects and service area in one clear place—and give prospective clients a simple way to ask for a quote.</p>
-        <div class="actions">
-          <a class="quote-link" href="https://wa.me/2349017580961?text=Hi%20Afxalion%2C%20I%E2%80%99d%20like%20to%20ask%20about%20a%20website%20quote.">Get a quote <span class="arrow" aria-hidden="true">→</span></a>
-          <a class="work-link" href="#work">See the work <span class="arrow" aria-hidden="true">›</span></a>
-        </div>
-      </div>
-    </section>
-    <nav class="shortcuts" aria-label="Quick links">
-      <a class="shortcut" href="#services"><span class="shortcut-icon reference-icon" aria-hidden="true"><img src="assets/service-hardhat-reference.png" alt=""></span><span>Services</span></a>
-      <a class="shortcut" href="#work"><span class="shortcut-icon building-icon" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><span>Projects</span></a>
-      <a class="shortcut" href="https://wa.me/2349017580961?text=Hi%20Afxalion%2C%20I%E2%80%99d%20like%20to%20make%20an%20enquiry." aria-label="Make an enquiry on WhatsApp"><span class="shortcut-icon"><span class="envelope-icon" aria-hidden="true"><i></i><i></i></span></span><span>Enquiries</span></a>
-    </nav>
-    <section class="services-section" id="services" aria-labelledby="services-title">
-      <div class="services-visual"><img src="assets/services-worker-scene.webp" alt="Construction professional reviewing work on site at sunset" loading="lazy"></div>
-      <div class="services-copy">
-        <p class="eyebrow">WHAT WE BUILD</p>
-        <h2 id="services-title">Everything your website needs to do its job.</h2>
-        <p>Help clients understand what you build, see the work, and start a conversation.</p>
-        <a class="services-cta" href="#service-list">Explore services <span class="arrow" aria-hidden="true">→</span></a>
-      </div>
-      <ul class="service-list" id="service-list" aria-label="Afxalion services">
-        <li><span class="service-icon building" aria-hidden="true"></span><strong>Company<br>websites</strong></li>
-        <li><span class="service-icon gallery" aria-hidden="true"></span><strong>Project<br>galleries</strong></li>
-        <li><span class="service-icon form" aria-hidden="true"></span><strong>Quote<br>forms</strong></li>
-        <li><span class="service-icon pin" aria-hidden="true"></span><strong>Local<br>SEO</strong></li>
-        <li><span class="service-icon shield" aria-hidden="true"></span><strong>Website<br>care</strong></li>
-      </ul>
-    </section>
-    <section class="work-section" id="work" aria-labelledby="work-title">
-      <div class="work-layout">
-        <div class="work-copy">
-          <p class="eyebrow">PROJECTS</p>
-          <h2 id="work-title">Give your work a clear place to speak for itself.</h2>
-          <p>See a website example from my portfolio, then explore illustrative layouts for different construction businesses.</p>
-          <a class="work-cta" href="project-examples.html" target="_blank" rel="noopener noreferrer">View projects <span class="arrow" aria-hidden="true">→</span></a>
-        </div>
-        <div class="project-grid" aria-label="Example construction website projects">
-          <article class="project-card">
-            <a href="project-examples.html#residential" target="_blank" rel="noopener noreferrer" aria-label="Open the residential construction website example in a new tab"><img src="https://images.unsplash.com/photo-1781269986378-a2f366df4d0f?auto=format&amp;fit=crop&amp;w=1000&amp;q=84" srcset="https://images.unsplash.com/photo-1781269986378-a2f366df4d0f?auto=format&amp;fit=crop&amp;w=600&amp;q=82 600w, https://images.unsplash.com/photo-1781269986378-a2f366df4d0f?auto=format&amp;fit=crop&amp;w=1200&amp;q=84 1200w" sizes="(max-width: 820px) 40vw, 24vw" alt="Modern residential home with landscaped grounds" loading="lazy"></a>
-            <div class="project-card-copy"><h3><a href="project-examples.html#residential" target="_blank" rel="noopener noreferrer">Residential Construction</a></h3><p>A modern home with premium finishes.</p><a class="project-link" href="project-examples.html#residential" target="_blank" rel="noopener noreferrer">View website example <span aria-hidden="true">↗</span></a></div>
-          </article>
-          <article class="project-card">
-            <a href="project-examples.html#commercial" target="_blank" rel="noopener noreferrer" aria-label="Open the commercial construction website example in a new tab"><img src="https://images.unsplash.com/photo-1757207276347-4cc5d4068c13?auto=format&amp;fit=crop&amp;w=1000&amp;q=84" srcset="https://images.unsplash.com/photo-1757207276347-4cc5d4068c13?auto=format&amp;fit=crop&amp;w=600&amp;q=82 600w, https://images.unsplash.com/photo-1757207276347-4cc5d4068c13?auto=format&amp;fit=crop&amp;w=1200&amp;q=84 1200w" sizes="(max-width: 820px) 40vw, 24vw" alt="Modern commercial office building with reflective glass windows" loading="lazy"></a>
-            <div class="project-card-copy"><h3><a href="project-examples.html#commercial" target="_blank" rel="noopener noreferrer">Commercial Construction</a></h3><p>A new office space in the CBD.</p><a class="project-link" href="project-examples.html#commercial" target="_blank" rel="noopener noreferrer">View website example <span aria-hidden="true">↗</span></a></div>
-          </article>
-          <article class="project-card">
-            <a href="project-examples.html#civil" target="_blank" rel="noopener noreferrer" aria-label="Open the civil infrastructure website example in a new tab"><img src="https://images.unsplash.com/photo-1763798709709-ef54e8bad856?auto=format&amp;fit=crop&amp;w=1000&amp;q=84" srcset="https://images.unsplash.com/photo-1763798709709-ef54e8bad856?auto=format&amp;fit=crop&amp;w=600&amp;q=82 600w, https://images.unsplash.com/photo-1763798709709-ef54e8bad856?auto=format&amp;fit=crop&amp;w=1200&amp;q=84 1200w" sizes="(max-width: 820px) 40vw, 24vw" alt="Bridge construction over a wide river" loading="lazy"></a>
-            <div class="project-card-copy"><h3><a href="project-examples.html#civil" target="_blank" rel="noopener noreferrer">Civil Infrastructure</a></h3><p>Improving local connectivity.</p><a class="project-link" href="project-examples.html#civil" target="_blank" rel="noopener noreferrer">View website example <span aria-hidden="true">↗</span></a></div>
-          </article>
-        </div>
-      </div>
-      <div class="site-review" id="site-review">
-        <img src="assets/construction-site.webp" alt="Construction project at the framing stage" loading="lazy">
-        <div class="site-review-copy">
-          <div><p>Already have a website?</p><h3>Send us your site. We’ll show you where the enquiry path gets unclear.</h3></div>
-          <a class="work-cta" href="https://wa.me/2349017580961?text=Hi%20Afxalion%2C%20please%20review%20my%20website%20and%20show%20me%20where%20the%20enquiry%20path%20gets%20unclear.">Request a site review <span class="arrow" aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </section>
-    <section class="process-section" id="process" aria-labelledby="process-title">
-      <div class="process-inner">
-        <div class="process-hero">
-          <div class="process-copy">
-            <p class="eyebrow">HOW IT WORKS</p>
-            <h2 id="process-title">Our process is straightforward.</h2>
-            <p>From first conversation to launch, we keep you informed and in control.</p>
-            <a class="process-cta" href="#process-steps">See the process <span class="arrow" aria-hidden="true">→</span></a>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">Independent web design &amp; development studio</p>
+          <h1 id="hero-title">Make your next website <em>feel like you.</em></h1>
+          <p class="hero-lede">Afxalion designs and builds clear, considered websites for businesses. Bring the idea; we’ll shape the right place for it online.</p>
+          <div class="hero-actions">
+            <a class="button button-orange" href="https://wa.me/2349017580961?text=Hi%20Afxalion%2C%20I%E2%80%99d%20like%20to%20discuss%20a%20website%20project.">Discuss a project <span aria-hidden="true">↗</span></a>
+            <a class="button button-outline" href="#work">Explore examples <span aria-hidden="true">↓</span></a>
           </div>
+          <p class="hero-note">Thoughtful design&nbsp; · &nbsp;Useful details&nbsp; · &nbsp;Built for your goals</p>
         </div>
-        <ol class="process-steps" id="process-steps" aria-label="Afxalion website process">
-          <li class="process-card"><span class="step-number">1</span><img src="assets/process-talk.webp" alt="Discussing a website project" loading="lazy"><div class="process-card-copy"><h3>Talk through the work</h3></div></li>
-          <li class="process-card"><span class="step-number">2</span><img src="assets/process-scope.webp" alt="Planning the website scope" loading="lazy"><div class="process-card-copy"><h3>Agree the scope</h3></div></li>
-          <li class="process-card"><span class="step-number">3</span><img src="assets/process-review.webp" alt="Reviewing the website build" loading="lazy"><div class="process-card-copy"><h3>Review the build</h3></div></li>
-          <li class="process-card"><span class="step-number">4</span><img src="assets/process-launch.webp" alt="Preparing a construction website for launch" loading="lazy"><div class="process-card-copy"><h3>Prepare for launch</h3></div></li>
-        </ol>
-      </div>
-    </section>
-    <section class="scope-section" id="scope" aria-labelledby="scope-title">
-      <span class="scope-hardhat" aria-hidden="true"></span>
-      <div class="scope-layout">
-        <div class="scope-copy">
-          <p class="eyebrow">PLAN YOUR WEBSITE</p>
-          <h2 id="scope-title">Get a clearer picture of the scope.</h2>
-          <p>Choose the pages and features you need to start a useful conversation about your website. Afxalion will confirm the price after reviewing the scope.</p>
-        </div>
-        <form class="scope-form" id="scope-form">
-          <fieldset>
-            <legend>What do you need?</legend>
-            <div class="scope-options">
-              <label class="scope-option"><input type="checkbox" name="scope" value="Home page"><span>Home page</span></label>
-              <label class="scope-option"><input type="checkbox" name="scope" value="Services pages"><span>Services pages</span></label>
-              <label class="scope-option"><input type="checkbox" name="scope" value="Project gallery"><span>Project gallery</span></label>
-              <label class="scope-option"><input type="checkbox" name="scope" value="Quote forms"><span>Quote forms</span></label>
-              <label class="scope-option"><input type="checkbox" name="scope" value="Local SEO"><span>Local SEO</span></label>
-              <label class="scope-option"><input type="checkbox" name="scope" value="Website care"><span>Website care</span></label>
-              <label class="scope-option"><input type="checkbox" name="scope" value="Other"><span>Other</span></label>
+        <div class="hero-art" aria-label="Abstract preview of a website design">
+          <div class="art-orbit" aria-hidden="true"></div><span class="art-spark" aria-hidden="true">✳</span>
+          <div class="browser">
+            <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>yourbusiness.com</span></div>
+            <div class="browser-page">
+              <div class="mock-nav"><span><b></b> YOUR BUSINESS</span><span class="mock-links">ABOUT SERVICES CONTACT</span></div>
+              <div class="mock-hero"><div><small>MADE FOR WHAT’S NEXT</small><h2>A clearer way<br>to show up.</h2><p>Good work deserves a thoughtful place online.</p><span class="mock-button">Explore the work ↗</span></div><div class="mock-photo" aria-hidden="true"></div></div>
+              <div class="mock-bottom"><span>DESIGN WITH PURPOSE</span><span>01 — 03</span></div>
             </div>
-          </fieldset>
-          <button class="work-cta" type="submit">Estimate my project <span class="arrow" aria-hidden="true">→</span></button>
-          <p class="scope-note">No automatic price is shown. Afxalion will review your selections and confirm the scope.</p>
-        </form>
+          </div>
+          <span class="hero-caption" aria-hidden="true">A better first impression</span>
+        </div>
       </div>
     </section>
-    <section class="guide-section" id="guide" aria-labelledby="guide-title">
-      <div class="guide-layout">
-        <div class="guide-copy">
-          <p class="eyebrow">FREE CONSTRUCTION WEBSITE CHECKLIST</p>
-          <h2 id="guide-title">10 things to check on your construction website.</h2>
-          <p>Review your services, project photos, service area, mobile layout, and contact options with one practical list.</p>
-          <form class="guide-form" id="guide-form">
-            <label class="sr-only" for="guide-email">Your email address</label>
-            <input id="guide-email" type="email" name="email" placeholder="Your email address" autocomplete="email" required>
-            <button type="submit">Get the checklist</button>
-          </form>
+    <div class="ticker" aria-label="Website design, development and launch">
+      <div class="ticker-inner"><span>Design <i>✳</i> Development <i>✳</i> Clear communication <i>✳</i> Your next idea <i>✳</i> Design <i>✳</i> Development <i>✳</i> Clear communication <i>✳</i> Your next idea <i>✳</i></span></div>
+    </div>
+    <section class="section services" id="services" aria-labelledby="services-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">What Afxalion does</p><h2 id="services-title">A website that brings the pieces together.</h2></div>
+          <p>From the first outline to the finished site, get thoughtful design and development shaped around what your business needs to communicate.</p>
         </div>
-        <div class="guide-visual" aria-label="Preview of the construction website checklist">
-          <article class="guide-cover">
-            <p class="guide-cover-brand">AFXALION</p>
-            <h3>Construction Website Checklist</h3>
-            <p>10 things to check on your construction website.</p>
-            <ol><li>Services are easy to find</li><li>Project photos are current</li><li>Service area is clear</li><li>Mobile layout works well</li><li>Contact options are visible</li></ol>
+        <div class="service-grid">
+          <article class="service-card"><span class="service-number">01 / DESIGN</span><span class="service-icon" aria-hidden="true">✳</span><h3>Website design</h3><p>A clear visual direction and page structure that give your business a consistent presence online.</p></article>
+          <article class="service-card"><span class="service-number">02 / BUILD</span><span class="service-icon" aria-hidden="true">⌘</span><h3>Website development</h3><p>Responsive pages and useful interactions, put together to work across screen sizes.</p></article>
+          <article class="service-card"><span class="service-number">03 / REFRESH</span><span class="service-icon" aria-hidden="true">↗</span><h3>Website redesign</h3><p>A considered update for an existing website that no longer reflects your business or direction.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="section work" id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <div class="section-head work-head">
+          <div><p class="eyebrow">Selected examples</p><h2 id="work-title">Different ideas, thoughtfully brought online.</h2></div>
+          <p>Explore a website project and illustrative layouts. Concept examples are identified as such.</p>
+        </div>
+        <div class="work-grid">
+          <article class="work-card">
+            <a href="funseka-example/index.html" aria-label="Open the Funseka travel and logistics website"><div class="work-visual travel"><span class="visual-label">Travel &amp; logistics</span></div></a>
+            <div class="work-info"><div><h3>Funseka</h3><p>Travel and logistics website</p></div><a class="work-link" href="funseka-example/index.html">View website ↗</a></div>
+          </article>
+          <article class="work-card">
+            <a href="project-examples.html" aria-label="Open illustrative construction website concepts"><div class="work-visual build"><span class="visual-label">Illustrative concepts</span></div></a>
+            <div class="work-info"><div><h3>Website concepts</h3><p>Illustrative business website layouts</p></div><a class="work-link" href="project-examples.html">View concepts ↗</a></div>
           </article>
         </div>
-      </div>
-      <div class="guide-benefits" aria-label="Checklist benefits">
-        <div class="guide-benefit"><span aria-hidden="true">✓</span>Better service visibility</div>
-        <div class="guide-benefit"><span aria-hidden="true">▣</span>More project confidence</div>
-        <div class="guide-benefit"><span aria-hidden="true">↗</span>Clearer enquiry path</div>
+        <p class="work-note">The website concepts are illustrative examples, not completed client projects. Funseka is a separate website project.</p>
       </div>
     </section>
-    <section class="faq-section" id="faq" aria-labelledby="faq-title">
-      <div class="faq-heading">
-        <p class="eyebrow">FAQ</p>
-        <h2 id="faq-title">Frequently asked questions.</h2>
-        <p>Find quick answers about Afxalion and the website process.</p>
-      </div>
-      <div class="faq-grid">
-        <details class="faq-item"><summary><span class="faq-icon" aria-hidden="true">?</span><span>Who does Afxalion build websites for?</span></summary><p class="faq-answer">Builders, contractors, and construction companies looking for a website for their business.</p></details>
-        <details class="faq-item"><summary><span class="faq-icon" aria-hidden="true">?</span><span>What can Afxalion help with?</span></summary><p class="faq-answer">Company websites, project galleries, quote forms, local SEO foundations, and website care.</p></details>
-        <details class="faq-item"><summary><span class="faq-icon" aria-hidden="true">?</span><span>How much does a website cost?</span></summary><p class="faq-answer">The price depends on the pages, content, and features involved. Share what you need and Afxalion will discuss the scope and quote with you.</p></details>
-        <details class="faq-item"><summary><span class="faq-icon" aria-hidden="true">?</span><span>Can you use our project photos?</span></summary><p class="faq-answer">Yes, when you have permission to use them. Current, relevant photos help visitors understand the work.</p></details>
-        <details class="faq-item"><summary><span class="faq-icon" aria-hidden="true">?</span><span>Can you guarantee more enquiries or higher search rankings?</span></summary><p class="faq-answer">No specific enquiry volume or search position can be guaranteed. Afxalion can make your services, projects, and contact path clear and build useful technical foundations.</p></details>
-        <details class="faq-item"><summary><span class="faq-icon" aria-hidden="true">?</span><span>How do I start?</span></summary><p class="faq-answer">Call, message Afxalion on WhatsApp, or send a short quote request with your location and project details.</p></details>
-      </div>
-    </section>
-    <section class="contact-section" id="contact" aria-labelledby="contact-title">
-      <div class="contact-layout">
-        <div class="contact-copy">
-          <h2 id="contact-title">Have a website project in mind?</h2>
-          <p>Tell Afxalion what your company builds and what you need the website to do.</p>
-          <a class="contact-quote" href="https://wa.me/2349017580961?text=Hi%20Afxalion%2C%20I%20have%20a%20website%20project%20in%20mind.">Get a quote <span class="arrow" aria-hidden="true">→</span></a>
+    <section class="section approach" id="approach" aria-labelledby="approach-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">How we work</p><h2 id="approach-title">A clear process, from first conversation to launch.</h2></div>
+          <p>Start with what you need. We’ll talk through the project, agree what’s in scope and keep the next steps clear as the work takes shape.</p>
         </div>
-        <div class="contact-list" aria-label="Contact Afxalion">
-          <a class="contact-method" href="tel:+2349017580961"><span class="contact-symbol" aria-hidden="true">☎</span><span><strong>Call</strong><span>+234 901 758 0961</span></span></a>
-          <a class="contact-method" href="https://wa.me/2349017580961"><span class="contact-symbol whatsapp" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M16 3.5a12 12 0 0 0-10.3 18.2L4 28l6.5-1.7A12 12 0 1 0 16 3.5Z" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"/><path d="M11.2 9.5c-.5 0-.9.3-1.2.8-.4.6-1.2 1.5-1.2 3.1 0 1.8 1.3 3.7 1.5 4 .2.3 2.7 4.2 6.6 5.7 3.2 1.2 3.8 1 4.5.9.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.7.2-1.9-.1-.2-.4-.3-.8-.5l-2.5-1.2c-.4-.2-.7-.3-1 .3-.3.5-1 1.2-1.3 1.5-.2.3-.5.3-.9.1-.4-.2-1.8-.7-3.4-2.1-1.3-1.1-2.1-2.4-2.3-2.8-.2-.4 0-.7.2-.9.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5 0-.7l-1.1-2.5c-.3-.7-.6-.7-.9-.7h-.4Z" fill="currentColor"/></svg></span><span><strong>WhatsApp</strong><span>+234 901 758 0961</span></span></a>
-          <a class="contact-method" href="mailto:afzalabdussalam@gmail.com"><span class="contact-symbol email" aria-hidden="true"></span><span><strong>Email</strong><span>afzalabdussalam@gmail.com</span></span></a>
+        <div class="steps">
+          <article class="step"><span class="step-num">01</span><h3>Talk through the idea</h3><p>Share what your business does, who the website is for and what you want it to communicate.</p></article>
+          <article class="step"><span class="step-num">02</span><h3>Agree the scope</h3><p>We’ll discuss the pages, content and features that fit the project before work begins.</p></article>
+          <article class="step"><span class="step-num">03</span><h3>Design and build</h3><p>Review the direction as the website takes shape and share feedback along the way.</p></article>
+          <article class="step"><span class="step-num">04</span><h3>Prepare for launch</h3><p>Review the finished website together and go through the steps needed to publish it.</p></article>
         </div>
       </div>
-      <nav class="social-row" aria-label="Afxalion social profiles">
-        <a href="https://x.com/website_ng1?s=11" target="_blank" rel="noopener noreferrer"><span class="social-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3L12 14.9 5.8 22H2.6l7.3-8.4L2.2 2h6.5l4.5 6.7L18.9 2Zm-1.1 18h1.7L7.7 3.9H5.9L17.8 20Z"/></svg></span><span>X</span></a>
-        <a href="https://www.instagram.com/website_ng1?srtk=MTYzeDkwMHBjbTMyag%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener noreferrer"><span class="social-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2.3"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="2.1"/><circle cx="17.7" cy="6.6" r="1.2" fill="currentColor"/></svg></span><span>Instagram</span></a>
-        <a href="https://www.tiktok.com/@official.webpage_ng?_r=1&amp;_t=ZS-9BPSUHz7Vlh" target="_blank" rel="noopener noreferrer"><span class="social-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M18.2 5.1a5.7 5.7 0 0 1-3.5-3.3V1h-3.8v14.2a2.7 2.7 0 1 1-2.7-2.7c.4 0 .8.1 1.1.2V8.8a6.4 6.4 0 1 0 5.4 6.3V8a9.4 9.4 0 0 0 5.5 1.8V6a5.8 5.8 0 0 1-2-.9Z"/></svg></span><span>TikTok</span></a>
-      </nav>
     </section>
-    <footer class="contact-footer"><a class="brand" href="./index.html" aria-label="Afxalion home"><i class="brand-mark" aria-hidden="true"></i><span>Afxalion</span></a><span>Websites for builders, contractors, and construction teams.</span></footer>
+    <section class="section faq" id="faq" aria-labelledby="faq-title">
+      <div class="wrap faq-layout">
+        <div class="faq-intro"><p class="eyebrow">Good to know</p><h2 id="faq-title">A few common questions.</h2><p>Have something else in mind? Get in touch and tell us a little about it.</p></div>
+        <div class="faq-list">
+          <details><summary>Who does Afxalion work with?</summary><p>Afxalion works with businesses looking for a website or a thoughtful update to an existing one.</p></details>
+          <details><summary>What does a website project cost?</summary><p>It depends on the pages, content and features involved. Share what you have in mind and Afxalion can discuss the scope and quote with you.</p></details>
+          <details><summary>Can you work with my existing website?</summary><p>Get in touch with a link and a short note about what you’d like to change. Afxalion can discuss the project and possible next steps with you.</p></details>
+          <details><summary>How do we get started?</summary><p>Send a message with a little context about your business and what you’d like your website to do. Afxalion will follow up to discuss the project.</p></details>
+        </div>
+      </div>
+    </section>
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact-layout">
+        <div class="contact-copy"><p class="eyebrow">Have a project in mind?</p><h2 id="contact-title">Let’s make a good place for it online.</h2><p>Tell us what you’re working on and what you’d like your website to do.</p><a class="button button-light" href="https://wa.me/2349017580961?text=Hi%20Afxalion%2C%20I%20have%20a%20website%20project%20in%20mind.">Start a conversation <span aria-hidden="true">↗</span></a></div>
+        <div class="contact-links" aria-label="Contact Afxalion">
+          <a href="tel:+2349017580961"><span>Call</span><span>+234 901 758 0961 ↗</span></a>
+          <a href="https://wa.me/2349017580961"><span>WhatsApp</span><span>+234 901 758 0961 ↗</span></a>
+          <a href="mailto:afzalabdussalam@gmail.com"><span>Email</span><span>afzalabdussalam@gmail.com ↗</span></a>
+        </div>
+      </div>
+    </section>
   </main>
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <a class="brand" href="#home" aria-label="Afxalion home"><span class="brand-mark" aria-hidden="true"></span><span>Afxalion</span></a>
+      <p>Web design &amp; development</p>
+      <nav class="socials" aria-label="Afxalion social profiles">
+        <a href="https://x.com/website_ng1?s=11" target="_blank" rel="noopener noreferrer">X ↗</a>
+        <a href="https://www.instagram.com/website_ng1?srtk=MTYzeDkwMHBjbTMyag%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+        <a href="https://www.tiktok.com/@official.webpage_ng?_r=1&amp;_t=ZS-9BPSUHz7Vlh" target="_blank" rel="noopener noreferrer">TikTok ↗</a>
+      </nav>
+    </div>
+  </footer>
   <script>
-    const pageLoader=document.querySelector('#page-loader');
-    const dismissLoader=()=>{pageLoader.classList.add('is-hidden');window.setTimeout(()=>document.documentElement.classList.remove('page-loading'),260);};
-    if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',dismissLoader,{once:true});else dismissLoader();
     const toggle=document.querySelector('.menu-toggle');
     const menu=document.querySelector('#mobile-nav');
     toggle.addEventListener('click',()=>{
       const open=toggle.getAttribute('aria-expanded')==='true';
       toggle.setAttribute('aria-expanded',String(!open));
       toggle.setAttribute('aria-label',open?'Open navigation menu':'Close navigation menu');
-      menu.dataset.open=String(!open);menu.hidden=open;
+      menu.dataset.open=String(!open);
+      menu.hidden=open;
     });
     menu.addEventListener('click',event=>{
-      if(event.target.closest('a')){menu.hidden=true;menu.dataset.open='false';toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation menu');}
-    });
-    const siteHeader=document.querySelector('.header');
-    const darkSection=document.querySelector('.services-section');
-    if('IntersectionObserver' in window){
-      new IntersectionObserver(entries=>siteHeader.classList.toggle('is-dark',entries[0].isIntersecting),{rootMargin:'-20% 0px -55% 0px'}).observe(darkSection);
-    }
-    document.querySelector('#scope-form').addEventListener('submit',event=>{
-      event.preventDefault();
-      const chosen=[...event.currentTarget.querySelectorAll('input[name="scope"]:checked')].map(input=>input.value);
-      const details=chosen.length?chosen.join(', '):'I would like help deciding which pages and features I need';
-      const message=`Hi Afxalion, I would like to discuss my website scope. I am considering: ${details}. Please review the scope and advise on the next step.`;
-      window.open(`https://wa.me/2349017580961?text=${encodeURIComponent(message)}`,'_blank','noopener,noreferrer');
-    });
-    document.querySelector('#guide-form').addEventListener('submit',event=>{
-      event.preventDefault();
-      const email=event.currentTarget.querySelector('input[type="email"]').value.trim();
-      const subject=encodeURIComponent('Construction website checklist request');
-      const body=encodeURIComponent(`Please send me the construction website checklist. My email address is ${email}.`);
-      window.location.href=`mailto:afzalabdussalam@gmail.com?subject=${subject}&body=${body}`;
+      if(event.target.closest('a')){
+        menu.hidden=true;
+        menu.dataset.open='false';
+        toggle.setAttribute('aria-expanded','false');
+        toggle.setAttribute('aria-label','Open navigation menu');
+      }
     });
   </script>
 </body>
